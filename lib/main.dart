@@ -1,5 +1,6 @@
 import 'package:ekaksha/app_blocs.dart';
 import 'package:ekaksha/app_events.dart';
+import 'package:ekaksha/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:ekaksha/pages/welcome/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => AppBlocs(),
+        create: (context) => WelcomeBloc(),
         child: ScreenUtilInit(
           builder: (context, child) => const MaterialApp(
             debugShowCheckedModeBanner: false,

@@ -1,4 +1,5 @@
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:ekaksha/main.dart';
 import 'package:ekaksha/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:ekaksha/pages/welcome/bloc/welcome_event.dart';
 import 'package:flutter/material.dart';
@@ -130,8 +131,18 @@ class _WelcomePageState extends State<WelcomePage> {
             if (index < 3) {
               //animation
               pageController.animateToPage(index,
-                  duration: const Duration(microseconds: 500),
-                  curve: Curves.decelerate);
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.easeIn);
+            } else {
+              //jump to next page
+
+              // Navigator.of(context).push(
+              //   MaterialPageRoute(
+              //     builder: (context) => const MyHomePage(),
+              //   ),
+              // );
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil("signIn", (route) => false);
             }
           },
           child: Container(

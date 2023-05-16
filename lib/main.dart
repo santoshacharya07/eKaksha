@@ -1,5 +1,6 @@
 import 'package:ekaksha/app_blocs.dart';
 import 'package:ekaksha/app_events.dart';
+import 'package:ekaksha/pages/%20sign_in/sign_in.dart';
 import 'package:ekaksha/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:ekaksha/pages/welcome/welcome.dart';
 import 'package:flutter/material.dart';
@@ -17,12 +18,38 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => WelcomeBloc(),
+    // return BlocProvider(
+    //   lazy: true,
+    //   create: (context) => WelcomeBloc(),
+    //   child: ScreenUtilInit(
+    //     builder: (context, child) => const MaterialApp(
+    //       debugShowCheckedModeBanner: false,
+    //       home: WelcomePage(),
+    //     ),
+    //   ),
+    // );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            // lazy: true,
+            create: (context) => WelcomeBloc(),
+          ),
+          BlocProvider(
+            create: (context) => AppBlocs(),
+          ),
+        ],
         child: ScreenUtilInit(
-          builder: (context, child) => const MaterialApp(
+          builder: (context, child) => MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: WelcomePage(),
+            theme: ThemeData(
+              appBarTheme: const AppBarTheme(
+                  elevation: 0, backgroundColor: Colors.white),
+            ),
+            home: const WelcomePage(),
+            routes: {
+              "myHomePage": (context) => const MyHomePage(),
+              "signIn": (context) => const SignIn(),
+            },
           ),
         ));
   }
@@ -57,12 +84,14 @@ class MyHomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           FloatingActionButton(
+            heroTag: "heroTAg1",
             onPressed: () =>
                 BlocProvider.of<AppBlocs>(context).add(Increment()),
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
           FloatingActionButton(
+            heroTag: "heroTAg2",
             onPressed: () =>
                 BlocProvider.of<AppBlocs>(context).add(Decrement()),
             tooltip: 'Decrement',

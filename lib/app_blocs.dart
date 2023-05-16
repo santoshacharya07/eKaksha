@@ -5,13 +5,14 @@ import 'app_events.dart';
 
 class AppBlocs extends Bloc<AppEvents, AppState> {
   AppBlocs() : super(InitState()) {
+    print("App Bloc called");
     on<Increment>((event, emit) {
-      print("I am getting called");
+      // print("I am getting called");
       emit(AppState(counter: state.counter + 1));
       print(state.counter);
     });
     on<Decrement>((event, emit) {
-      print("I am getting called");
+      // print("I am getting called");
       emit(AppState(counter: state.counter - 1));
       print(state.counter);
     });

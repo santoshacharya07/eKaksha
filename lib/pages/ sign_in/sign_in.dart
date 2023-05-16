@@ -22,10 +22,28 @@ class _SignInState extends State<SignIn> {
           appBar: buildAppBar(),
           body: SingleChildScrollView(
               child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              buildThirdPArtyLogin(
-                context,
+              buildThirdPArtyLogin(context),
+              Center(child: reusableText("Or use you email account to login")),
+              Container(
+                margin: EdgeInsets.only(top: 66.h),
+                padding: EdgeInsets.only(left: 25.w, right: 25.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    reusableText("Email"),
+                    SizedBox(height: 5.h),
+                    buildTextField("Enter your email adress", "email", "user"),
+                    reusableText("Password"),
+                    SizedBox(height: 5.h),
+                    buildTextField("Enter your password", "password", "lock")
+                  ],
+                ),
               ),
+              forgotPassword(),
+              buildLogInAndRegButton("Log in","login"),
+              buildLogInAndRegButton("REgister","register"),
             ],
           )),
         ),

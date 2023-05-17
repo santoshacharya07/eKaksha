@@ -27,7 +27,7 @@ class _SignInState extends State<SignIn> {
               buildThirdPArtyLogin(context),
               Center(child: reusableText("Or use you email account to login")),
               Container(
-                margin: EdgeInsets.only(top: 66.h),
+                margin: EdgeInsets.only(top: 36.h),
                 padding: EdgeInsets.only(left: 25.w, right: 25.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,8 +42,8 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
               forgotPassword(),
-              buildLogInAndRegButton("Log in","login"),
-              buildLogInAndRegButton("REgister","register"),
+              buildLogInAndRegButton("Log in", "login"),
+              buildLogInAndRegButton("Register", "register"),
             ],
           )),
         ),

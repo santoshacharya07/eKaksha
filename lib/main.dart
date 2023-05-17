@@ -1,5 +1,6 @@
 import 'package:ekaksha/app_blocs.dart';
 import 'package:ekaksha/app_events.dart';
+import 'package:ekaksha/pages/%20sign_in/bloc/sign_in_blocs.dart';
 import 'package:ekaksha/pages/%20sign_in/sign_in.dart';
 import 'package:ekaksha/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:ekaksha/pages/welcome/welcome.dart';
@@ -33,11 +34,15 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider(
-            // lazy: true,
+            lazy: false,
             create: (context) => WelcomeBloc(),
           ),
           BlocProvider(
+            lazy: false,
             create: (context) => AppBlocs(),
+          ),
+          BlocProvider(
+            create: (context) => SignInBloc(),
           ),
         ],
         child: ScreenUtilInit(
